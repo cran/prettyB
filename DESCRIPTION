@@ -1,23 +1,26 @@
-Package: prettyB
 Type: Package
+Package: prettyB
 Title: Pretty Base Graphics
-Version: 0.2.1
-Authors@R: person(given="Colin", family="Gillespie",
-    email="csgillespie@gmail.com", role = c("aut", "cre"))
+Version: 0.2.2
+Authors@R: 
+    person(given = "Colin",
+           family = "Gillespie",
+           role = c("aut", "cre"),
+           email = "csgillespie@gmail.com")
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
-Description: Drop-in replacements for standard base graphics functions. The 
-    replacements are prettier versions of the originals.
-URL: https://github.com/jumpingrivers/prettyB/
-BugReports: https://github.com/jumpingrivers/prettyB//issues
+Description: Drop-in replacements for standard base graphics
+    functions. The replacements are prettier versions of the originals.
 License: GPL-2 | GPL-3
-Imports: grDevices, stats, graphics
-Suggests: testthat, vdiffr, covr, lintr, knitr
+URL: https://github.com/jumpingrivers/prettyB/
+BugReports: https://github.com/jumpingrivers/prettyB/issues
+Imports: graphics, grDevices, stats
+Suggests: covr, knitr, lintr, rmarkdown, testthat, vdiffr
+VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: true
-VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2019-05-17 07:35:20 UTC; ncsg3
+Packaged: 2021-02-10 13:01:19 UTC; ncsg3
 Author: Colin Gillespie [aut, cre]
 Repository: CRAN
-Date/Publication: 2019-05-17 14:20:04 UTC
+Date/Publication: 2021-02-10 13:50:03 UTC

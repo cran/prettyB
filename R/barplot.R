@@ -26,29 +26,20 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
                            cex.names = par("cex.axis"), inside = TRUE,
                            plot = TRUE, axis.lty = 0, offset = 0,
                            add = FALSE, args.legend = NULL, ...) {
-  # op = set_par_minimal()
-  # on.exit(par(op))
   setup_prettyB()
 
   # Unchanged Arguments
   args = list(...)
-  args$height = height
-  args$width = width
-  args$space = space
-  args$names.arg = names.arg
-  args$legend.text = legend.text
-  args$beside = beside
-  args$horiz = horiz
-  args$density = density
-  args$angle = angle
+  args$height = height; args$width = width; args$space = space
+  args$names.arg = names.arg; args$legend.text = legend.text
+  args$beside = beside; args$horiz = horiz
+  args$density = density; args$angle = angle
   # barplot normally takes care of this
   # But we do a pass through plot first for grid lines
   args$xlab = if (missing(xlab)) NA else xlab
   args$ylab = if (missing(ylab)) NA else ylab
-  args$xpd = xpd
-  args$log = log
-  args$axisnames = axisnames
-  args$cex.axis = cex.axis
+  args$xpd = xpd; args$log = log
+  args$axisnames = axisnames; args$cex.axis = cex.axis
   args$cex.names = cex.names
   # inside isn't actually implemented
   if (!missing(inside)) args$inside = inside
@@ -64,7 +55,7 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
   if (!is.null(col)) {
     args$col = col
   } else if (is.matrix(height)) {
-    args$col = 1:NROW(height)
+    args$col = seq_len(NROW(height))
   } else {
     args$col = 1
   }
@@ -121,7 +112,7 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
     lab = colnames(height)
   } else {
     lab_loc = res
-    if (is.matrix(height) ){
+    if (is.matrix(height)) {
       lab = colnames(height)
     } else {
       lab_loc = res
@@ -131,10 +122,10 @@ barplot.prettyB = function(height, width = 1, space = NULL, names.arg = NULL,
 
   if (isTRUE(args$horiz)) {
     add_x_axis(ticks_x, tick = FALSE)
-    add_y_axis(lab_loc, labels = lab, tick = FALSE)
+    if (isTRUE(axisnames)) add_y_axis(lab_loc, labels = lab, tick = FALSE)
   } else {
     add_y_axis(ticks_y, tick = FALSE)
-    add_x_axis(lab_loc, labels = lab, tick = FALSE)
+    if (isTRUE(axisnames)) add_x_axis(lab_loc, labels = lab, tick = FALSE)
   }
   add_title(main)
   add_sub(sub)
